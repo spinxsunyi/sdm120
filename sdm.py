@@ -60,7 +60,7 @@ while True:
     # print(now + "," + Volts + "," + Current + "," +  Active_Power + "," + Apparent_Power + "," + Reactive_Power + "," + Power_Factor + "," + Phase_Angle + "," + Frequency + "," + Import_Active_Energy + "," +Export_Active_Energy + "," + Import_Reactive_Energy + "," + Export_Reactive_Energy + "," + Total_Active_Energy + "," + Total_Reactive_Energy + "\n")
     file.write(data)
     file.flush()
-    file.close()
+    # file.close()
 
     print 'Time: {0:.1f} '.format(time.time())
     print 'Voltage: {0:.1f} Volts'.format(Volts)
