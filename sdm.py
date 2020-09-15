@@ -18,7 +18,7 @@ rs485.serial.stopbits = 1
 rs485.serial.timeout = 1
 rs485.debug = False
 rs485.mode = minimalmodbus.MODE_RTU
-print rs485
+print(rs485)
 
 # Enter Your API key here
 myAPI = 'GCCOV8FWLO2WKP0U' 
@@ -60,7 +60,7 @@ while True:
     except:
         data ='{}, unknown error{}'.format(now,chr(10))
 
-    print data
+    print data,
     
     # file.write(now + "," + Volts + "," + Current + "," +  Active_Power + "," + Apparent_Power + "," + Reactive_Power + "," + Power_Factor + "," + Phase_Angle + "," + Frequency + "," + Import_Active_Energy + "," +Export_Active_Energy + "," + Import_Reactive_Energy + "," + Export_Reactive_Energy + "," + Total_Active_Energy + "," + Total_Reactive_Energy + "\n")
     # print(now + "," + Volts + "," + Current + "," +  Active_Power + "," + Apparent_Power + "," + Reactive_Power + "," + Power_Factor + "," + Phase_Angle + "," + Frequency + "," + Import_Active_Energy + "," +Export_Active_Energy + "," + Import_Reactive_Energy + "," + Export_Reactive_Energy + "," + Total_Active_Energy + "," + Total_Reactive_Energy + "\n")
