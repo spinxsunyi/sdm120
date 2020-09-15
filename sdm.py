@@ -31,8 +31,9 @@ if os.stat("/home/pi/data2.csv").st_size == 0:
         file.write("Time, Volts, Current, Active_Power, Apparent_Power, Reactive_Power, Power_Factor, Phase_Angle, Frequency, Import_Active_Energy, Export_Active_Energy, Import_Reactive_Energy, Export_Reactive_Energy, Total_Active_Energy, Total_Reactive_Energy\n")
 
 now = datetime.now()
-file.write("{} program start\n").format(now)
-print("{} program start\n").format(now)
+data = ("{} program start\n").format(now)
+file.write(data)
+print(data)
 
 while True:
     now = datetime.now()
@@ -56,8 +57,6 @@ while True:
             Reactive_Power,Power_Factor,Phase_Angle,Frequency,Import_Active_Energy,
             Export_Active_Energy,Import_Reactive_Energy,Export_Reactive_Energy,Total_Active_Energy,Total_Reactive_Energy
             ,chr(10))
-    except NoResponseError:
-        data = '{}, no response error'.format(now)
     else:
         data ='{}, unknown error'.format(now)
     
