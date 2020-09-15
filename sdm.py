@@ -30,6 +30,10 @@ i=0
 if os.stat("/home/pi/data2.csv").st_size == 0:
         file.write("Time, Volts, Current, Active_Power, Apparent_Power, Reactive_Power, Power_Factor, Phase_Angle, Frequency, Import_Active_Energy, Export_Active_Energy, Import_Reactive_Energy, Export_Reactive_Energy, Total_Active_Energy, Total_Reactive_Energy\n")
 
+now = datetime.now()
+file.write("{} program start\n").format(now)
+print("{} program start\n").format(now)
+
 while True:
     now = datetime.now()
     try:
@@ -54,6 +58,8 @@ while True:
             ,chr(10))
     except NoResponseError:
         data = '{}, no response error'.format(now)
+    else:
+        data ='{}, unknown error'.format(now)
     
     print(data)
     
@@ -63,10 +69,10 @@ while True:
     file.flush()
     # file.close()
 
-    print 'Time: {0:.1f} '.format(time.time())
-    print 'Voltage: {0:.1f} Volts'.format(Volts)
-    print 'Current: {0:.1f} Amps'.format(Current)
-    print 'Active power: {0:.1f} Watts'.format(Active_Power)
+    # print 'Time: {0:.1f} '.format(time.time())
+    # print 'Voltage: {0:.1f} Volts'.format(Volts)
+    # print 'Current: {0:.1f} Amps'.format(Current)
+    # print 'Active power: {0:.1f} Watts'.format(Active_Power)
     #print 'Apparent power: {0:.1f} VoltAmps'.format(Apparent_Power)
     #print 'Reactive power: {0:.1f} VAr'.format(Reactive_Power)
     #print 'Power factor: {0:.1f}'.format(Power_Factor)
@@ -76,9 +82,9 @@ while True:
     #print 'Export active energy: {0:.3f} kwh'.format(Export_Active_Energy)
     #print 'Import reactive energy: {0:.3f} kvarh'.format(Import_Reactive_Energy)
     #print 'Export reactive energy: {0:.3f} kvarh'.format(Export_Reactive_Energy)
-    print 'Total active energy: {0:.3f} kwh'.format(Total_Active_Energy)
-    print 'Total reactive energy: {0:.3f} kvarh'.format(Total_Reactive_Energy)
+    # print 'Total active energy: {0:.3f} kwh'.format(Total_Active_Energy)
+    # print 'Total reactive energy: {0:.3f} kvarh'.format(Total_Reactive_Energy)
     #print 'Current Yield (V*A): {0:.1f} Watt'.format(Volts * Current)
-    time.sleep(5)
+    time.sleep(10)
 
     
