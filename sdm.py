@@ -57,10 +57,10 @@ while True:
             Reactive_Power,Power_Factor,Phase_Angle,Frequency,Import_Active_Energy,
             Export_Active_Energy,Import_Reactive_Energy,Export_Reactive_Energy,Total_Active_Energy,Total_Reactive_Energy
             ,chr(10))
-    else:
-        data ='{}, unknown error'.format(now)
-    
-    print(data)
+    except:
+        data ='{}, unknown error{}'.format(now,chr(10))
+
+    print data
     
     # file.write(now + "," + Volts + "," + Current + "," +  Active_Power + "," + Apparent_Power + "," + Reactive_Power + "," + Power_Factor + "," + Phase_Angle + "," + Frequency + "," + Import_Active_Energy + "," +Export_Active_Energy + "," + Import_Reactive_Energy + "," + Export_Reactive_Energy + "," + Total_Active_Energy + "," + Total_Reactive_Energy + "\n")
     # print(now + "," + Volts + "," + Current + "," +  Active_Power + "," + Apparent_Power + "," + Reactive_Power + "," + Power_Factor + "," + Phase_Angle + "," + Frequency + "," + Import_Active_Energy + "," +Export_Active_Energy + "," + Import_Reactive_Energy + "," + Export_Reactive_Energy + "," + Total_Active_Energy + "," + Total_Reactive_Energy + "\n")
