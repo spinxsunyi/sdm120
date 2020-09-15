@@ -31,28 +31,29 @@ if os.stat("/home/pi/data2.csv").st_size == 0:
         file.write("Time, Volts, Current, Active_Power, Apparent_Power, Reactive_Power, Power_Factor, Phase_Angle, Frequency, Import_Active_Energy, Export_Active_Energy, Import_Reactive_Energy, Export_Reactive_Energy, Total_Active_Energy, Total_Reactive_Energy\n")
 
 while True:
-    Volts = rs485.read_float(0, functioncode=4, number_of_registers=2)
-    Current = rs485.read_float(6, functioncode=4, number_of_registers=2)
-    Active_Power = rs485.read_float(12, functioncode=4, number_of_registers=2)
-    Apparent_Power = rs485.read_float(18, functioncode=4, number_of_registers=2)
-    Reactive_Power = rs485.read_float(24, functioncode=4, number_of_registers=2)
-    Power_Factor = rs485.read_float(30, functioncode=4, number_of_registers=2)
-    Phase_Angle = rs485.read_float(36, functioncode=4, number_of_registers=2)
-    Frequency = rs485.read_float(70, functioncode=4, number_of_registers=2)
-    Import_Active_Energy = rs485.read_float(72, functioncode=4, number_of_registers=2) 
-    Export_Active_Energy = rs485.read_float(74, functioncode=4, number_of_registers=2)
-    Import_Reactive_Energy = rs485.read_float(76, functioncode=4, number_of_registers=2)
-    Export_Reactive_Energy = rs485.read_float(78, functioncode=4, number_of_registers=2)
-    Total_Active_Energy = rs485.read_float(342, functioncode=4, number_of_registers=2)
-    Total_Reactive_Energy = rs485.read_float(344, functioncode=4, number_of_registers=2)
-    
     now = datetime.now()
-    
-    data = '{}, {:.3f}, {:.3f}, {:.3f}, {:.3f}, {:.3f}, {:.3f}, {:.3f}, {:.3f}, {:.3f}, {:.3f}, {:.3f}, {:.3f}, {:.3f}, {:.3f}{}'.format(
-        now,Volts,Current,Active_Power,Apparent_Power,
-        Reactive_Power,Power_Factor,Phase_Angle,Frequency,Import_Active_Energy,
-        Export_Active_Energy,Import_Reactive_Energy,Export_Reactive_Energy,Total_Active_Energy,Total_Reactive_Energy
-        ,chr(10))
+    try:
+        Volts = rs485.read_float(0, functioncode=4, number_of_registers=2)
+        Current = rs485.read_float(6, functioncode=4, number_of_registers=2)
+        Active_Power = rs485.read_float(12, functioncode=4, number_of_registers=2)
+        Apparent_Power = rs485.read_float(18, functioncode=4, number_of_registers=2)
+        Reactive_Power = rs485.read_float(24, functioncode=4, number_of_registers=2)
+        Power_Factor = rs485.read_float(30, functioncode=4, number_of_registers=2)
+        Phase_Angle = rs485.read_float(36, functioncode=4, number_of_registers=2)
+        Frequency = rs485.read_float(70, functioncode=4, number_of_registers=2)
+        Import_Active_Energy = rs485.read_float(72, functioncode=4, number_of_registers=2) 
+        Export_Active_Energy = rs485.read_float(74, functioncode=4, number_of_registers=2)
+        Import_Reactive_Energy = rs485.read_float(76, functioncode=4, number_of_registers=2)
+        Export_Reactive_Energy = rs485.read_float(78, functioncode=4, number_of_registers=2)
+        Total_Active_Energy = rs485.read_float(342, functioncode=4, number_of_registers=2)
+        Total_Reactive_Energy = rs485.read_float(344, functioncode=4, number_of_registers=2)
+        data = '{}, {:.3f}, {:.3f}, {:.3f}, {:.3f}, {:.3f}, {:.3f}, {:.3f}, {:.3f}, {:.3f}, {:.3f}, {:.3f}, {:.3f}, {:.3f}, {:.3f}{}'.format(
+            now,Volts,Current,Active_Power,Apparent_Power,
+            Reactive_Power,Power_Factor,Phase_Angle,Frequency,Import_Active_Energy,
+            Export_Active_Energy,Import_Reactive_Energy,Export_Reactive_Energy,Total_Active_Energy,Total_Reactive_Energy
+            ,chr(10))
+    except NoResponseError:
+        data = '{}, no response error'.format(now)
     
     print(data)
     
