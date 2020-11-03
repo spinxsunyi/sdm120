@@ -2,7 +2,7 @@
 
 import minimalmodbus
 import json
-import paho.mqtt.publish as publish
+#import paho.mqtt.publish as publish
 import os
 import time 
 from time import sleep
@@ -25,9 +25,9 @@ myAPI = 'GCCOV8FWLO2WKP0U'
 # URL where we will send the data, Don't change it
 baseURL = 'https://api.thingspeak.com/update?api_key=%s' % myAPI 
 
-file = open("/home/pi/data2.csv", "a")
+file = open("/home/pi/data.csv", "a")
 i=0
-if os.stat("/home/pi/data2.csv").st_size == 0:
+if os.stat("/home/pi/data.csv").st_size == 0:
         file.write("Time, Volts, Current, Active_Power, Apparent_Power, Reactive_Power, Power_Factor, Phase_Angle, Frequency, Import_Active_Energy, Export_Active_Energy, Import_Reactive_Energy, Export_Reactive_Energy, Total_Active_Energy, Total_Reactive_Energy\n")
 
 now = datetime.now()
@@ -84,6 +84,5 @@ while True:
     # print 'Total active energy: {0:.3f} kwh'.format(Total_Active_Energy)
     # print 'Total reactive energy: {0:.3f} kvarh'.format(Total_Reactive_Energy)
     #print 'Current Yield (V*A): {0:.1f} Watt'.format(Volts * Current)
-    time.sleep(10)
-
+    time.sleep(60)
     
